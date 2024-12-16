@@ -1,0 +1,15 @@
+#ifndef MUSIC_H
+#define MUSIC_H
+#include "media.h"
+#include <cstring>
+
+class music: public media {
+public:
+  char* artist = new char[20];
+  char* duration = new char[20];
+  char* publisher = new char[20];
+  music();
+  virtual void print();
+};
+
+#endif

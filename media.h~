@@ -1,0 +1,12 @@
+#ifndef MEDIA_H
+#define MEDIA_H
+#include <cstring>
+
+class media {
+public:
+  char* title;
+  int year;
+  virtual void print();
+};
+
+#endif

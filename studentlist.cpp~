@@ -1,0 +1,70 @@
+#include <iostream>
+#include <cstring>
+#include <vector>
+#include <cmath>
+
+using namespace std;
+
+struct Student {
+  char fname[10];
+  char lname[10];
+  int id = 0;
+  int gpa = 0.00;
+  
+};
+
+void add(vector<Student*> &list);
+
+int main() {
+  vector<Student*> list;
+  
+  int input;
+  char option[10];
+  bool done = false;
+  while (done == false){
+    cout << "Would you like to ADD or DELETE or PRINT or QUIT" << endl;
+    cin >> option;
+    if (option[0] == 'A'){
+      add(list);
+    }
+    else if (option[0] == 'P'){
+      for (int i = 0; i < list.size(); i++){
+	cout << list[i]->fname << " " << list[i]->lname << endl << list[i]->id << endl << list[i]->gpa << "\n";
+      }
+    }
+    else if (option[0] == 'D'){
+      cout << "What is the student's id" << endl;
+      cin >> input;
+      for (int i = 0; i < list.size(); i++){
+	if (list[i]->id == input){
+	  list.erase( std::next(list.begin(),i));
+	  i--;
+	}
+      }
+    }
+    else if (option[0] == 'Q')
+      done = true;
+    else
+      cout << "That is not an option";
+  }
+
+  return 0;
+}
+
+void add(vector<Student*> &list)  {
+
+  struct Student* sptr = new Student();
+  
+  cout << "Enter first name -" << endl;
+  cin >> sptr->fname;
+  cout << "Enter last name -" << endl;
+  cin >> sptr->lname;
+  cout << "Enter ID # -" << endl;
+  cin >> sptr->id;
+  cout << "Enter GPA -" << endl;
+  cin >> sptr->gpa;
+
+  list.push_back(sptr);
+
+  return;
+}
